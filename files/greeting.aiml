@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<aiml version="1.0">
+    
+<category>
+    <pattern>J</pattern>
+        <template>
+            <think>
+            	<set name="SoftwareEngineer">0</set>
+            	<set name="ProductManager">0</set>
+            	<set name="SoftwareTester">0</set>
+            	<set name="DataScientist">0</set>
+            	<set name="DatabaseEngineer">0</set>
+            </think>
+        This is a test made up of 10 multiple choice questions that will help you choose a job after getting your computer science degree.<br/><br/>Type START to begin the test.
+        </template>
+</category>
+
+<category>
+    <pattern>SE</pattern>
+    <template>
+        <think>
+        <set name="SoftwareEngineer">
+        <map><name>successor</name><get name="SoftwareEngineer"/></map>
+        </set>
+        </think>
+    </template>
+</category>
+
+<category>
+    <pattern>PM</pattern>
+    <template>
+        <think>
+        <set name="ProductManager">
+        <map><name>successor</name><get name="ProductManager"/></map>
+        </set>
+        </think>
+    </template>
+</category>
+
+<category>
+    <pattern>ST</pattern>
+    <template>
+        <think>
+        <set name="SoftwareTester">
+        <map><name>successor</name><get name="SoftwareTester"/></map>
+        </set>
+        </think>
+    </template>
+</category>
+
+<category>
+    <pattern>DS</pattern>
+    <template>
+        <think>
+        <set name="DataScientist">
+        <map><name>successor</name><get name="DataScientist"/></map>
+        </set>
+        </think>
+    </template>
+</category>
+
+<category>
+    <pattern>DE</pattern>
+    <template>
+        <think>
+        <set name="DatabaseEngineer">
+        <map><name>successor</name><get name="DatabaseEngineer"/></map>
+        </set>
+        </think>
+    </template>
+</category>
+
+<category>
+    <pattern>LARGEST</pattern>
+    <template>
+        <think>
+            <set name="FLAG">TRUE</set>
+            <set name="largest"><srai>XGT <get name="SoftwareEngineer"/> XS <get name="ProductManager"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+            <set name="largest"><srai>XGT <get name="SoftwareEngineer"/> XS <get name="SoftwareTester"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+            <set name="largest"><srai>XGT <get name="SoftwareEngineer"/> XS <get name="DataScientist"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+            <set name="largest"><srai>XGT <get name="SoftwareEngineer"/> XS <get name="DatabaseEngineer"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+        </think>
+        <condition name="FLAG">
+            <li value="TRUE">You should be a Software Engineer</li>
+            <li><srai>PMLARGEST</srai></li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>PMLARGEST</pattern>
+    <template>
+        <think>
+            <set name="FLAG">TRUE</set>
+            <set name="largest"><srai>XGT <get name="ProductManager"/> XS <get name="SoftwareEngineer"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+            <set name="largest"><srai>XGT <get name="ProductManager"/> XS <get name="SoftwareTester"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+            <set name="largest"><srai>XGT <get name="ProductManager"/> XS <get name="DataScientist"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+            <set name="largest"><srai>XGT <get name="ProductManager"/> XS <get name="DatabaseEngineer"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+        </think>
+        <condition name="FLAG">
+            <li value="TRUE">You should be a Product Manager</li>
+            <li><srai>STLARGEST</srai></li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>STLARGEST</pattern>
+    <template>
+        <think>
+            <set name="FLAG">TRUE</set>
+            <set name="largest"><srai>XGT <get name="SoftwareTester"/> XS <get name="SoftwareEngineer"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+            <set name="largest"><srai>XGT <get name="SoftwareTester"/> XS <get name="ProductManager"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+            <set name="largest"><srai>XGT <get name="SoftwareTester"/> XS <get name="DataScientist"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+            <set name="largest"><srai>XGT <get name="SoftwareTester"/> XS <get name="DatabaseEngineer"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+        </think>
+        <condition name="FLAG">
+            <li value="TRUE">You should be a Software Tester</li>
+            <li><srai>DSLARGEST</srai></li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>DSLARGEST</pattern>
+    <template>
+        <think>
+            <set name="FLAG">TRUE</set>
+            <set name="largest"><srai>XGT <get name="DataScientist"/> XS <get name="SoftwareEngineer"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+            <set name="largest"><srai>XGT <get name="DataScientist"/> XS <get name="ProductManager"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+            <set name="largest"><srai>XGT <get name="DataScientist"/> XS <get name="SoftwareTester"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+            <set name="largest"><srai>XGT <get name="DataScientist"/> XS <get name="DatabaseEngineer"/></srai></set>
+            <condition name="largest">
+                <li value="FALSE"><set name="FLAG">FALSE</set></li>
+            </condition>
+        </think>
+        <condition name="FLAG">
+            <li value="TRUE">You should be a Data Scientist</li>
+            <li>You should be a Database Engineer</li>
+        </condition>
+    </template>
+</category>
+
+
+
+
+
+
+
+
+</aiml>
